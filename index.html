@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Imagine a time...</title>
+<link rel="stylesheet" type="text/css" href="./style/inspector.css">
+<link rel="stylesheet" type="text/css" href="./bootstrap-5.2.0-dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./style/exhibition.css">
+
+<body>
+    <script type="module">
+
+        import define from "./slide1.js";
+        import { Runtime, Library, Inspector } from "./core/runtime.js";
+
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.querySelector("div.slide")));
+
+    </script>
+    <div class="slide d-flex align-items-end"></div>
