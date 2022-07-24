@@ -20,9 +20,9 @@ function _3(html, getChart, decadeSelected, d3) {
           </div>
           <div class="col-4">
             <h3>Accident sites</h3>
-            <p><em>In which kinds of sites do you think the most accidents took place?</em> The graphic to the left represents the amount of reporting around accidents in different sites.</p>
+            <p><em>Where do you think more accidents involving machinery happened?</em> The circles to the left are sized by the number of accidents reported in different sites.</p>
 
-<p><em>Switch the decades above, and then guess which kind of site the biggest circle represents. Tap it to see if you were right.</p>
+<p><em>Tap a decade to how this changed over time. Can you guess what kind of site had the most or least accidents reported? Tap a circle to see if you were right.</p>
           </div>
         </div>
       </div>
