@@ -57,6 +57,12 @@ nav {
     margin-bottom: 1rem;
 }
 
+.list-group-item.active {
+    background-color: #83c8b6 !important;
+    border-color: #71ad9c !important;
+    font-weight: bold !important;
+}
+
 #data-selector {
     margin-bottom: 2rem;
 }
