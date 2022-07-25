@@ -1,3 +1,3 @@
 /* slide3 = a566a1f767ee4bcb */
 
-export { default } from "./notebooks/slide3.js";
+export { default } from "./notebooks/slide3@306.js";
