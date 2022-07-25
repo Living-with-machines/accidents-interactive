@@ -335,8 +335,8 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["accumulativeByDate@1.json", { url: new URL("./files/40e591aeb3b2f0075a899f5cb827e43346589691979de06e86eab50ce11936b2642248aabf11ddca0540d0818f03b3542d2635460171799c767f9fc3afac0742.json", import.meta.url), mimeType: "application/json", toString }],
-    ["zooniverse-comments@1.csv", { url: new URL("./files/ac187a9ba708a0eaf9f3a7fbab9a6882243482026437f1785e0aed7802256dfff2f0b4f9e825ae182a99f9a75db8f9b9d879804ea4cd250018c2f3bd5ce51fbe.csv", import.meta.url), mimeType: "text/csv", toString }]
+    ["accumulativeByDate@1.json", { url: new URL("./files/accumulativeByDate.json", import.meta.url), mimeType: "application/json", toString }],
+    ["zooniverse-comments@1.csv", { url: new URL("./files/zooniverse-comments.csv", import.meta.url), mimeType: "text/csv", toString }]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["breadCrumb"], _1);

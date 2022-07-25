@@ -209,7 +209,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["categoryDataByDecade.json", { url: new URL("./files/de1bce695c6bf745bfcbe77c2758d4893c279c6f3cfa38d18e42ede7f976c53932f573f9444a9745662c5eae73fb3e4615bd752b75a3b5efc405a1c32b884cb1.json", import.meta.url), mimeType: "application/json", toString }]
+    ["categoryDataByDecade.json", { url: new URL("./files/categoryDataByDecade.json", import.meta.url), mimeType: "application/json", toString }]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["breadCrumb"], _1);
