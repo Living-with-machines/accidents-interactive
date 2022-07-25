@@ -26,7 +26,7 @@ function _place(Inputs, m, html, d3, Event) {
 }
 
 
-function _accumulativeAccidentArticles(d3, Plot, place, accumulativeByDate, width, html, zooniverseComment) {
+function _accumulativeAccidentArticles(d3, Plot, place, accumulativeByDate, width, html) {
   const plot = d3.select(Plot.plot({
     y: {
       type: "log",
@@ -43,30 +43,40 @@ function _accumulativeAccidentArticles(d3, Plot, place, accumulativeByDate, widt
         Plot.text(accumulativeByDate[place], Plot.selectLast({
           x: "date",
           y: "totalArticles",
-          text: d => place, textAnchor: "end", dx: 0, dy: -10
+          text: d => place, textAnchor: "end", dx: 0, dy: -10,
+          fontSize: "2rem"
         }))
       ],
     grid: true,
-    marginLeft: 50,
-    marginTop: 50,
+    marginLeft: 40,
+    marginTop: 0,
+    marginBottom: 30,
     width,
-    height: 500
+    height: 800
   }))
 
   plot.attr("style", "max-width:100%;height:auto;")
+  plot.selectAll("g[aria-label='x-axis'] .tick text").attr("font-size", "1rem")
+  plot.selectAll("g[aria-label='y-axis'] .tick text").attr("font-size", "0.8rem")
+  plot.selectAll("g[aria-label='y-axis'] .tick text").nodes()[0].remove()
+  const x = plot.selectAll("g[aria-label='x-axis'] .tick text").nodes().pop()
+  x.remove()
 
   return html`
-  <div id="data-content" class="d-flex flex-row align-items-start">
+  <div id="data-content" class="d-flex flex-column align-items-start">
     <div class="card shadow-sm">
       <div class="card-body row">
-        <div class="col-6">
+        <div class="col-8">
           <h3>When did newspapers report accidents?</h3>
           <p>The timeline shows the total number of accidents reported in our sample over time. Select a place above to see how local reports contributed to the total.</p>
           ${plot.node()}
         </div>
   
-        <div class="col-6">
-          ${zooniverseComment}
+        <div class="col-4">
+          <div class="col-12 d-flex flex-column align-items-center justify-content-center h-100 w-100">
+              <div id="comment" class="mt-auto"></div>
+              <div id="commentProgress" class="mt-auto" style="background:#d4d7d1;width:0;height:5px;border-radius:5px">
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +90,39 @@ function _4(backToStart) {
     backToStart()
   )
 }
+
+function _delaySeconds() {
+  return (
+    10
+  )
+}
+
+function* _reloader(delaySeconds, reloadComment, getHTML) {
+  const delayFrames = delaySeconds * 60;
+
+  let frame = 0,
+    current = reloadComment(),
+    _html = getHTML(current);
+
+  document.querySelector("#comment").innerHTML = _html
+
+  while (true) {
+    frame++;
+    const second = ~~(frame / 60)
+    if (second === delaySeconds) {
+      current = reloadComment(current)
+      _html = getHTML(current)
+      document.querySelector("#comment").innerHTML = _html
+      frame = 0
+    }
+
+    const percentDone = +(frame / delayFrames) // .toFixed(1)
+    document.querySelector("#commentProgress").style.width = percentDone * 100 + "%";
+
+    yield [current, second, frame]
+  }
+}
+
 
 function _m(_, accumulativeByDate) {
   return (
@@ -159,21 +202,6 @@ function _backToStart(html) {
   )
 }
 
-async function* _zooniverseComment(_, zooniverseComments, getHTML, Promises, getNewSample) {
-  let current = _.sample(zooniverseComments)
-
-  yield getHTML(current);
-
-  while (true) {
-    await Promises.delay(10000);
-    const sample = getNewSample(current);
-    current = sample;
-
-    yield getHTML(current);
-  }
-}
-
-
 function _getNewSample(_, zooniverseComments) {
   return (
     (current) => {
@@ -190,35 +218,24 @@ function _getNewSample(_, zooniverseComments) {
   )
 }
 
+function _reloadComment(getNewSample) {
+  return (
+    (current) => current ? getNewSample(current) : getNewSample(undefined)
+  )
+}
+
 function _zooniverseComments(FileAttachment) {
   return (
     FileAttachment("zooniverse-comments@1.csv").csv()
   )
 }
 
-function _getHTML(html, moment, d3) {
+function _getHTML(moment) {
   return (
-    (current) => {
-      const elem = html`
-      <div class="col-12 d-flex align-items-center justify-content-center h-100 w-100">
-        <div class="col-11 pe-3 d-flex flex-column align-items-center">
-          <p class="small text-muted">${moment(current.datePublished).format("D MMMM YYYY")}</p>
-          <p class="text-center">${current.comment}</p>
-          <p class="pt-4 mt-4 border-top border-warning small">Zooniverse volunteer</p>
-        </div>
-        <!--
-        <div class="col-1 d-flex align-items-center" style="font-size: 3rem;">
-           <a id="nextQuote" style="color: #f9b233 !important;">&#x27A1;</a>
-         </div>
-        -->
-      </div>`
-
-      d3.select(elem).select("#nextQuote").on("click", function () {
-
-      })
-
-      return elem;
-    }
+    (current) => `
+  <p class="small text-muted">${moment(current.datePublished).format("D MMMM YYYY")}</p>
+  <p class="text-center">${current.comment}</p>
+  <p class="small pt-4 mt-4 border-top border-warning">Zooniverse volunteer</p>`
   )
 }
 
@@ -239,17 +256,19 @@ export default function define(runtime, observer) {
   main.variable(observer()).define(["breadCrumb"], _1);
   main.variable(observer("viewof place")).define("viewof place", ["Inputs", "m", "html", "d3", "Event"], _place);
   main.variable(observer("place")).define("place", ["Generators", "viewof place"], (G, _) => G.input(_));
-  main.variable(observer("accumulativeAccidentArticles")).define("accumulativeAccidentArticles", ["d3", "Plot", "place", "accumulativeByDate", "width", "html", "zooniverseComment"], _accumulativeAccidentArticles);
+  main.variable(observer("accumulativeAccidentArticles")).define("accumulativeAccidentArticles", ["d3", "Plot", "place", "accumulativeByDate", "width", "html"], _accumulativeAccidentArticles);
   main.variable(observer()).define(["backToStart"], _4);
+  main.variable(observer("delaySeconds")).define("delaySeconds", _delaySeconds);
+  main.variable(observer("reloader")).define("reloader", ["delaySeconds", "reloadComment", "getHTML"], _reloader);
   main.variable(observer("m")).define("m", ["_", "accumulativeByDate"], _m);
   main.variable(observer("dataSelector")).define("dataSelector", ["html"], _dataSelector);
   main.variable(observer("accumulativeByDate")).define("accumulativeByDate", ["FileAttachment"], _accumulativeByDate);
   main.variable(observer("breadCrumb")).define("breadCrumb", ["html"], _breadCrumb);
   main.variable(observer("backToStart")).define("backToStart", ["html"], _backToStart);
-  main.variable(observer("zooniverseComment")).define("zooniverseComment", ["_", "zooniverseComments", "getHTML", "Promises", "getNewSample"], _zooniverseComment);
   main.variable(observer("getNewSample")).define("getNewSample", ["_", "zooniverseComments"], _getNewSample);
+  main.variable(observer("reloadComment")).define("reloadComment", ["getNewSample"], _reloadComment);
   main.variable(observer("zooniverseComments")).define("zooniverseComments", ["FileAttachment"], _zooniverseComments);
-  main.variable(observer("getHTML")).define("getHTML", ["html", "moment", "d3"], _getHTML);
+  main.variable(observer("getHTML")).define("getHTML", ["moment"], _getHTML);
   main.variable(observer("moment")).define("moment", ["require"], _moment);
   return main;
 }
