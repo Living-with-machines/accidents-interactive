@@ -9,7 +9,7 @@ function _place(Inputs,m,html,d3,Event)
   const embedding = html`<div id="data-selector" class="d-flex flex-row">
     <div class="col-8" style="font-size: 1.75vw">
       <div class="input-group input-group-sm mb-3" id="data-selector-group">
-        <span class="input-group-text">Select a particular place to view details</span>
+        <span class="input-group-text">Select a place to compare</span>
         ${elem}
       </div>
     </div>
