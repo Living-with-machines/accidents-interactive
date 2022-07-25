@@ -135,7 +135,7 @@ function _breadCrumb(html) {
       active = ""
     } = {}) => html`<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#slide2">Explore sample data</a></li>
+      <li class="breadcrumb-item"><a href="slide2.html">Explore sample data</a></li>
       <li class="breadcrumb-item active" aria-current="page">${active}</li>
     </ol>
   </nav>`
@@ -145,7 +145,7 @@ function _breadCrumb(html) {
 function _backToStart(html) {
   return (
     () => html`<footer class="mt-auto">
-    <p><a class="me-4 btn btn btn-warning rounded-4 shadow" href="#slide2">Back to start</a></p>
+    <p><a class="me-4 btn btn btn-warning rounded-4 shadow" href="slide2.html">Back to start</a></p>
   </footer>`
   )
 }
