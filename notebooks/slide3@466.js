@@ -66,19 +66,29 @@ function _accumulativeAccidentArticles(d3, Plot, place, accumulativeByDate, widt
   <div id="data-content" class="d-flex flex-column align-items-start">
     <div class="card shadow-sm">
       <div class="card-body row">
-        <div class="col-8">
-          <h3>When did newspapers report accidents?</h3>
-          <p>The timeline shows the total number of accidents reported in our sample over time. Select a place above to see how local reports contributed to the total.</p>
-          ${plot.node()}
-        </div>
+      <div class="col-12">
+        <h3>When did newspapers report accidents?</h3>
+      </div>
+        
+      <div class="col-8">
+      <p>The timeline shows the total number of accidents reported in our sample over time. Select a place above to see how local reports contributed to the total.</p>
+      </div>
+      
+      <div class="col-4">
+        <p class="small"><strong>Online volunteers read thousands of articles to create this dataset. Their comments helped shape this exhibition. We’ve shared some comments for a sense of the accidents they read about.</strong></p>
+      </div>
+
+      <div class="col-8">
+        ${plot.node()}
+      </div>
   
-        <div class="col-4">
-          <div class="col-12 d-flex flex-column align-items-center justify-content-center h-100 w-100">
-              <div id="comment" class="d-flex flex-column align-items-center mt-auto"></div>
-              <div id="commentProgress" class="mt-auto" style="background:#d4d7d1;width:0;height:5px;border-radius:5px"></div>
-          </div>
+      <div class="col-4">
+        <div class="col-12 d-flex flex-column align-items-center justify-content-center h-100 w-100">
+            <div id="comment" class="d-flex flex-column align-items-center mt-auto"></div>
+            <div id="commentProgress" class="mt-auto" style="background:#d4d7d1;width:0;height:5px;border-radius:5px"></div>
         </div>
       </div>
+
     </div>
   </div>
   `
