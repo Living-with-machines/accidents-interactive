@@ -31,9 +31,8 @@ svg {
 
 #data-selector select {
     background-color: white;
-    /* rgb(151, 231, 210); */
     border: 1px solid #cc8abb;
-    /* {d3.color(colors.greens[1]).brighter(0.2)}; */
+    height: 100% !important;
 }
 
 /* SLIDES */
@@ -44,12 +43,25 @@ svg {
     box-sizing: border-box;
     background: #FBFBFB;
     color: #463b76;
-    min-height: 65vw;
+    min-height: 1024px;
     font-size: 5vw;
     line-height: 1.15;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.highcharts-color-0,
+.highcharts-color-1,
+.highcharts-color-2,
+.highcharts-color-3,
+.highcharts-color-4,
+.highcharts-color-5,
+.highcharts-color-6,
+.highcharts-color-7,
+.highcharts-color-8,
+.highcharts-color-9 {
+    fill: black !important;
 }
 
 nav {
@@ -61,6 +73,11 @@ nav {
     background-color: #83c8b6 !important;
     border-color: #71ad9c !important;
     font-weight: bold !important;
+}
+
+.btn-xl {
+    font-size: 3rem;
+    padding: 0.5rem 5rem;
 }
 
 #data-selector {
