@@ -1,12 +1,13 @@
 function _1(htl) {
   return (
-    htl.html`<div class="slide">
-  <p>Where did newspapers report accidents involving machinery? We asked online volunteers to tag articles from selected regional newspapers. Explore the results.</p>
-  <div class="d-flex flex-row align-items-baseline">
-    <p><a class="me-4 btn btn-lg btn-warning rounded-4 shadow" href="slide3.html"><b>When</b> did newspapers report accidents?</a></p>
-    <p><a class="me-4 btn btn-lg btn-warning rounded-4 shadow" href="slide4.html"><b>Who</b> was affected?</a></p>
-    <p><a class="btn btn-lg btn-warning rounded-4 shadow" href="slide5.html">Factories or homes? Explore <b>accident sites</b></a></p>
-  </div>
+    htl.html`<div class="mt-auto">
+<p class="mb-5">Where did newspapers report accidents involving machinery?</p>
+<p style="font-size:80%" class="mb-4">We asked online volunteers to tag articles from selected regional newspapers. <em>Explore our early results.</em></p>
+</div>
+<div class="mt-auto d-flex flex-row align-items-center">
+  <a class="btn btn-xl btn-warning rounded-4 shadow me-3" href="slide3.html" style="font-size: 1.5rem !important;"><b>When</b> did newspapers report accidents?</a></a>
+  <a class="btn btn-xl btn-warning rounded-4 shadow me-3" href="slide4.html" style="font-size: 1.5rem !important;"><b>Who</b> was affected?</a>
+  <a class="btn btn-xl btn-warning rounded-4 shadow" href="slide5.html" style="font-size: 1.5rem !important;">Factories or homes? Explore <b>accident sites</b></a>
 </div>`
   )
 }

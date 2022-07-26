@@ -46,7 +46,7 @@ function _3(d3, _, genderAgeByDecade, Plot, counts, width, html, decade) {
       // Plot.ruleY([0]),
       Plot.text(counts, {
         x: "age",
-        y: d => d.count + 1,
+        y: d => d.count + 0.75,
         text: d => d.label && d.label.includes("wom") ? "women" : d.label && d.label.includes("men") ? "men" : d.label && d.label.includes("boy") ? "boys" : d.label ? "girls" : ""
       })
     ],
@@ -59,7 +59,7 @@ function _3(d3, _, genderAgeByDecade, Plot, counts, width, html, decade) {
     }
   })
 
-  d3.select(p).selectAll("svg > g > g > text").style("font-size", "2rem");
+  d3.select(p).selectAll("svg > g > g > text").style("font-size", "1.2rem");
 
   d3.select(p).selectAll("svg > g[aria-label='fx-axis']").style("display", "none");
   d3.select(p).selectAll("svg > g[aria-label='y-axis']").style("display", "none");
@@ -154,7 +154,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["genderAgeByDecade.json", { url: new URL("./files/genderAgeByDecade.json", import.meta.url), mimeType: "application/json", toString }]
+    ["genderAgeByDecade.json", { url: new URL("./files/8111d1400c78dd08a3020c40bb37acf92a13c81a59915e5697713c80bfa575285c606bdf8206dcc5af473486fc78c4b34906f54d7b04e99e7f891d37fb8e9e92.json", import.meta.url), mimeType: "application/json", toString }]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["breadCrumb"], _1);

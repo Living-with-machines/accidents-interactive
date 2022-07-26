@@ -15,13 +15,13 @@ function _3(html, getChart, decadeSelected) {
     <div id="data-content" class="d-flex flex-row align-items-start" style="">
       <div class="card shadow-sm col-11">
         <div class="card-header">
-          Accident sites
+          Where do you think more accidents happened?
         </div>
         <div class="card-body row">
           <div class="col-12 row" style="height: 370px;">
             <div class="col-4">
               <p><em>Where do you think more accidents involving machinery happened?</em> The circles to the right are sized by the number of accidents reported in different sites.</p>
-              <p><em>Tap a decade to how this changed over time. Can you guess what kind of site had the most or least accidents reported? Tap a circle to see if you were right.</em></p>
+              <p><em><strong>Tap a decade</strong> to how this changed over time. Can you guess what kind of site had the most or least accidents reported? Tap a circle to see if you were right.</em></p>
             </div>
             <div class="col-8">
               ${getChart({ decade: decadeSelected })}
@@ -209,7 +209,7 @@ export default function define(runtime, observer) {
   const main = runtime.module();
   function toString() { return this.url; }
   const fileAttachments = new Map([
-    ["categoryDataByDecade.json", { url: new URL("./files/categoryDataByDecade.json", import.meta.url), mimeType: "application/json", toString }]
+    ["categoryDataByDecade.json", { url: new URL("./files/de1bce695c6bf745bfcbe77c2758d4893c279c6f3cfa38d18e42ede7f976c53932f573f9444a9745662c5eae73fb3e4615bd752b75a3b5efc405a1c32b884cb1.json", import.meta.url), mimeType: "application/json", toString }]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["breadCrumb"], _1);
