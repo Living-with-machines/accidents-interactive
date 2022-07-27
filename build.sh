@@ -60,3 +60,9 @@ curl -o build/static/style/bootstrap.min.css 'https://cdn.jsdelivr.net/npm/boots
 curl -o build/static/style/bootstrap.min.css.map 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css.map'
 
 rm -rf .temp
+
+git checkout build
+git add *
+git commit -m "Build $now"
+git push
+git checkout main
