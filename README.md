@@ -3,6 +3,8 @@ Accidents interactive
 
 This is the “accidents interactive” for the _Living with Machines_ exhibit at Leeds City Museum 2022–23.
 
+See also the [“machines interactive”](https://github.com/Living-with-machines/machines-interactive) for the same exhibition.
+
 To run the kiosk using Python
 ---------------
 
