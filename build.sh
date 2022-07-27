@@ -9,7 +9,7 @@
 
 slide1v=67
 slide2v=42
-slide3v=749
+slide3v=750
 slide4v=222
 slide5v=271
 
@@ -64,8 +64,8 @@ curl -o build/static/style/bootstrap.min.css.map 'https://cdn.jsdelivr.net/npm/b
 
 rm -rf .temp
 
-git checkout $BUILD_BRANCH
-git add *
-git commit -m "Build $now"
-git push
-git checkout $BRANCH
+# git checkout $BUILD_BRANCH
+# git add *
+# git commit -m "Build $now"
+# git push
+# git checkout $BRANCH

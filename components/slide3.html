@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 
 <head>
-    <title>TITLE</title>
+    <title>When did newspapers report accidents?</title>
     <link rel="stylesheet" type="text/css" href="./static/style/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./static/style/exhibition.css">
 </head>
@@ -50,7 +50,7 @@
         // with the corresponding name.
         const main = runtime.module(notebook, name => {
             console.log(name)
-            if (["crumb", "viewof place", "dataFrame", "toStart"].includes(name)) {
+            if (["crumb", "viewof place", "dataFrame", "toStart", "counter"].includes(name)) {
                 return new Inspector(document.querySelector(`[name='${name}']`));
             }
         });
