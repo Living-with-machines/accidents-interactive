@@ -6,17 +6,21 @@ This is the “accidents interactive” for the _Living with Machines_ exhibit a
 To run the kiosk using Python
 ---------------
 
-1. Navigate to the uncompressed directory.
+1. Run the build command:
 
-2. Run the command:
-
+```sh
+$ bash build.sh
 ```
-$ bash setup.sh
+
+2. Navigate into the `build` folder:
+
+```sh
+$ cd build
 ```
 
 3. Run the command:
 
-```
+```sh
 $ python -m http.server 80
 ```
 
@@ -31,12 +35,16 @@ To run the kiosk using NodeJS
 
 You can also opt to run the kiosk using NodeJS if you would like. First, make sure you have NodeJS installed. Then, follow these steps:
 
-1. Navigate to the uncompressed directory.
-
-2. Run the command:
+1. Run the command:
 
 ```
-$ bash setup.sh
+$ bash build.sh
+```
+
+2. Navigate into the `build` folder:
+
+```sh
+$ cd build
 ```
 
 3. Run the command:
