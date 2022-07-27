@@ -13,6 +13,9 @@ slide3v=749
 slide4v=222
 slide5v=271
 
+BRANCH="kallewesterling/issue23"
+BUILD_BRANCH=build
+
 slide1h=acf5948490e70d89
 slide2h=cd56e0ffe4799c15
 slide3h=a566a1f767ee4bcb
@@ -61,8 +64,8 @@ curl -o build/static/style/bootstrap.min.css.map 'https://cdn.jsdelivr.net/npm/b
 
 rm -rf .temp
 
-git checkout build
+git checkout $BUILD_BRANCH
 git add *
 git commit -m "Build $now"
 git push
-git checkout main
+git checkout $BRANCH
