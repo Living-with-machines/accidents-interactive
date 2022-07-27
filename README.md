@@ -1,4 +1,4 @@
-# Accidents interactive
+Accidents interactive
 ===============
 
 This is the “accidents interactive” for the _Living with Machines_ exhibit at Leeds City Museum 2022–23.
