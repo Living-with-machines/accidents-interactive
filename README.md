@@ -19,6 +19,8 @@ _Windows users:_ Another helpful resource that might help with adding `python` t
 $ bash build.sh
 ```
 
+_Note: If you do not have a `bash` command (for instance, you are on a Windows machine), you can also just download the build directory as a `.zip` file from the [`build` branch on this repository](https://github.com/Living-with-machines/machines-interactive/tree/build). Click `Code` > `Download ZIP` and then serve that folder in the following command (step 2 below)._
+
 ### 2. Run the following command to get a local web server running on port 80:
 
 ```sh
