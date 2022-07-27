@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <title>When did newspapers report accidents?</title>
+    <link rel="stylesheet" type="text/css" href="./static/style/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/style/exhibition.css">
+</head>
+
+
+<body>
+    <div class="slide">
+        <div name="crumb"></div>
+        <div name="viewof place"></div>
+        <div name="dataFrame"></div>
+        <div name="toStart"></div>
+        <div name="counter"></div>
+    </div>
+
+    <script src="./static/modules/htl.js"></script>
+    <script src="./static/modules/d3.js"></script>
+    <script src="./static/modules/d3-selection.js"></script>
+    <script src="./static/modules/inputs.js"></script>
+    <script src="./static/modules/lodash.js"></script>
+    <script src="./static/modules/moment.js"></script>
+    <script src="./static/modules/plot.js"></script>
+    <script type="module">
+
+        import { Runtime, Library, Inspector } from "./static/core/runtime.js";
+        import notebook from "./slide3/a566a1f767ee4bcb@749.js";
+
+        const runtime = new Runtime(
+            new Library(name => {
+                console.log(name)
+                switch (name) {
+                    case "d3": return d3;
+                    case "d3-selection@2": return d3;
+                    //case "d3@7": return d3;
+                    //case "d3@7.6.1": return d3;
+                    case "moment@2.29.4": return moment;
+                    case "lodash@4.17.21": return _;
+                    case "@observablehq/inputs@0.10.4": return Inputs;
+                    case "@observablehq/plot@0.5.2": return Plot;
+                    case "htl@0.3.1": return htl;
+                }
+            })
+        );
+
+        // Show the output of the “chart” and “viewof replay” cells in the DIV elements
+        // with the corresponding name.
+        const main = runtime.module(notebook, name => {
+            console.log(name)
+            if (["crumb", "viewof place", "dataFrame", "toStart", "counter"].includes(name)) {
+                return new Inspector(document.querySelector(`[name='${name}']`));
+            }
+        });
+
+        // Redefine the “data” cell to use our CSV file (in the same format).
+        // main.redefine("data", d3.csv("./cities.csv", d3.autoType));
+
+        // Redefine the “k” cell to disable tweening between keyframes. (This dataset is
+        // already interpolated.)
+        // main.redefine("k", 1);
+
+    </script>
+
+</body>
+
+</html>

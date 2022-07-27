@@ -1,14 +1,26 @@
-# Accidents interactive
+Accidents interactive
+===============
 
 This is the “accidents interactive” for the _Living with Machines_ exhibit at Leeds City Museum 2022–23.
 
-## To run the kiosk using Python
+To run the kiosk using Python
+---------------
 
-1. Navigate to the uncompressed directory.
+1. Run the build command:
 
-2. Run the command:
-
+```sh
+$ bash build.sh
 ```
+
+2. Navigate into the `build` folder:
+
+```sh
+$ cd build
+```
+
+3. Run the command:
+
+```sh
 $ python -m http.server 80
 ```
 
@@ -16,18 +28,29 @@ _Prerequisites:_ Note that this means Python 3.7 or above must be installed, you
 
 You should now have a local web server running on port 80, which means that you can:
 
-3. Navigate to [localhost](http://localhost) (or 127.0.0.1) in your browser.
+4. Navigate to [localhost](http://localhost) (or 127.0.0.1) in your browser.
 
-## To run the kiosk using NodeJS
+To run the kiosk using NodeJS
+---------------
 
 You can also opt to run the kiosk using NodeJS if you would like. First, make sure you have NodeJS installed. Then, follow these steps:
 
-1. Navigate to the uncompressed directory.
+1. Run the command:
 
-2. Run the command:
+```
+$ bash build.sh
+```
+
+2. Navigate into the `build` folder:
+
+```sh
+$ cd build
+```
+
+3. Run the command:
 
 ```
 $ npx http-server --port 80
 ```
 
-3. Navigate to [localhost](http://localhost) (or 127.0.0.1) in your browser.
+4. Navigate to [localhost](http://localhost) (or 127.0.0.1) in your browser.
